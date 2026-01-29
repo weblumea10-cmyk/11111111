@@ -1,9 +1,10 @@
 
 import React, { useState, useEffect, useCallback } from 'react';
-import { AppScreen, Message } from './types';
-import Home from './components/Home';
-import Generator from './components/Generator';
-import { INITIAL_CREDITS, UPDATE_COST } from './constants';
+import { AppScreen, Message } from './types.ts';
+import Home from './components/Home.tsx';
+import Generator from './components/Generator.tsx';
+import Logo from './components/Logo.tsx';
+import { INITIAL_CREDITS, UPDATE_COST } from './constants.ts';
 
 const App: React.FC = () => {
   const [screen, setScreen] = useState<AppScreen>(AppScreen.HOME);
@@ -43,11 +44,14 @@ const App: React.FC = () => {
       )}
 
       {/* Persistent Branding */}
-      <div className="fixed bottom-4 right-4 z-50 pointer-events-none">
-        <div className="bg-white/80 backdrop-blur-md px-4 py-2 rounded-full shadow-lg border border-indigo-100 flex items-center gap-2">
-          <span className="text-xs font-bold tracking-widest text-indigo-600 uppercase">Creator</span>
-          <span className="text-sm font-extrabold text-slate-800">MURODJON AI</span>
-        </div>
+      <div className="fixed bottom-6 right-6 z-50 pointer-events-auto">
+        <a 
+          href="#" 
+          onClick={(e) => { e.preventDefault(); setScreen(AppScreen.HOME); }}
+          className="group bg-white/90 backdrop-blur-xl px-5 py-3 rounded-2xl shadow-2xl border border-slate-200 flex items-center gap-3 transition-all hover:scale-105 active:scale-95 hover:shadow-indigo-500/10"
+        >
+          <Logo size="sm" showText={true} />
+        </a>
       </div>
     </div>
   );
